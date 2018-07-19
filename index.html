@@ -84,16 +84,12 @@
   class Panel extends React.Component{
     constructor(props){
       super(props);
+    }
 
-    }
-    handleNothing(){
-      console.log("help")
-    }
 
     render(){
       // buttons is an array of Button elements with their associated audio element and text
       const buttons = this.props.set.map(function(sound){
-        console.log(this.props.changeDisplay)
         return(
           <Button clipSound={sound.sound} clipSource={sound.source} clipKey={sound.key} key={sound.key} changeDisplay={this.props.changeDisplay}/>
         )
@@ -146,7 +142,7 @@
   /*  Detects strokes in the form of onkeydown and sends the assocaited key-storke to playAudio*/
   $(document).ready(function(){
     onkeydown =function(event){
-      var stroke = event.key.toUpperCase();
+      var stroke = String.fromCharCode(event.keyCode);
       $("#"+stroke).click();
     }
   })

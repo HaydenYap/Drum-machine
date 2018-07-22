@@ -70,6 +70,12 @@
         var audio = new Audio($("#"+this.props.clipKey).attr("src"));
         audio.play();
         this.props.changeDisplay(this.props.clipSound);
+        $("#"+this.props.clipSound).css("opacity","0.5");
+        var that = this;
+        setTimeout(function () {
+          $("#"+that.props.clipSound).css("opacity","1");
+        }, 250);
+
     }
     render(){
       return(
@@ -119,7 +125,7 @@
     constructor(props){
       super(props);
       this.state={
-        display:""
+        display:"        "
       }
       this.handleDisplay = this.handleDisplay.bind(this)
     };
@@ -132,7 +138,9 @@
         <div id="drum-machine">
            <Panel changeDisplay={this.handleDisplay} set={setOne}/>
            <div id="display">
-           {this.state.display}
+            <div id ="display-box">
+              {this.state.display}
+            </div>
            </div>
         </div>
       )
